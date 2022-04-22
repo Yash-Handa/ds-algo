@@ -20,7 +20,8 @@ void display_container(T start, T end, string seperator = ",")
     cout << *start << '\n';
 }
 
-void reverse(vector<int>::iterator begin, vector<int>::iterator end)
+template <typename T>
+void reverse_custom(T begin, T end)
 {
     if (begin == end)
         return;
@@ -47,13 +48,13 @@ int main()
     display_container(v.begin(), v.end());
 
     // rotate the first half
-    reverse(v.begin(), v.begin() + rot);
+    reverse_custom(v.begin(), v.begin() + rot);
 
     // rotate the second half
-    reverse(v.begin() + rot, v.end());
+    reverse_custom(v.begin() + rot, v.end());
 
     // rotate the entire vector
-    reverse(v.begin(), v.end());
+    reverse_custom(v.begin(), v.end());
 
     cout << "Array Rotated by " << rot << ": ";
     display_container(v.begin(), v.end());
