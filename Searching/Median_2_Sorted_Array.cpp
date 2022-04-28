@@ -20,7 +20,7 @@ double median(vector<int> &v1, vector<int> &v2)
         int r_min1 = mid1 == v1.end() ? INT32_MAX : *mid1;
         int l_max1 = mid1 == v1.begin() ? INT32_MIN : *(mid1 - 1);
         int r_min2 = mid2 == v2.end() ? INT32_MAX : *mid2;
-        int l_max2 = mid2 == v1.begin() ? INT32_MIN : *(mid2 - 1);
+        int l_max2 = mid2 == v2.begin() ? INT32_MIN : *(mid2 - 1);
 
         // cout << "r_min1: " << r_min1 << "\tl_max1: " << l_max1 << "\tr_min2: " << r_min2 << "\tl_max2: " << l_max2 << "\n\n";
 
