@@ -28,7 +28,7 @@ int leftmost(string &str)
 int main()
 {
     string str = "abccbd";
-    string str = "abbacc";
+    // string str = "abbacc";
 
     cout << "Index of leftmost Non Repeating element is: " << leftmost(str) << '\n';
     return 0;
