@@ -5,9 +5,8 @@
 */
 #include <iostream>
 #include <vector>
-#include <unordered_set>
 
-using std::cout, std::string, std::vector, std::unordered_set;
+using std::cout, std::string, std::vector;
 
 struct Node
 {
@@ -25,7 +24,6 @@ class Linked_List
 {
 public:
     T *HEAD;
-    unordered_set<int> s;
 
     Linked_List()
     {
