@@ -13,9 +13,16 @@ jobs:
 
     steps:
       - name: Install updates to run latest c++ binary
-        run: sudo apt-get install libstdc++6 libc6
+        run: sudo apt-get install clang --install-suggests
         
       - uses: actions/checkout@v3
       
+      - name: Check clang version and path
+        run: |
+          which clang++
+          clang++ -v
+      
       - name: List files
-        run: git ls-files | ./Daily_Practice
+        run: git ls-files
+          
+#         run: git ls-files | ./Daily_Practice
