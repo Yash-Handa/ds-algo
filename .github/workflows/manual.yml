@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install git 
-        run: |
-          apt-get install -y git
-          PATH=$PATH:$(which git)
+#       - name: Install git 
+#         run: |
+#           apt-get install -y git
+#           PATH=$PATH:$(which git)
           
       - uses: actions/checkout@v3
       
