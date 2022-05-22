@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install clang
-        run: sudo apt-get install clang
+      - name: Install updates to run latest c++ binary
+        run: sudo apt-get install libstdc++6 libc6
         
       - uses: actions/checkout@v3
       
