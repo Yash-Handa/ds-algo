@@ -1,10 +1,10 @@
-name: Manual workflow To Get Files List Test
+name: Manual workflow To Get Files List
 on:
   workflow_dispatch:
     inputs:
       name:
         description: 'Get list of files in master branch'
-        default: 'Get Files List Test'
+        default: 'Get Files List'
         required: true
 
 jobs:
@@ -23,9 +23,7 @@ jobs:
           clang++ -v
       
       - name: Build binary
-        run: clang++ -fdiagnostics-color=always -Ofast -std=c++20 Daily_Practice_Corn_Job.cpp -o Daily_Practice_2
+        run: clang++ -fdiagnostics-color=always -Ofast -std=c++20 Daily_Practice_Corn_Job.cpp -o Daily_Practice
       
       - name: List files
-        run: git ls-files | ./Daily_Practice_2
-          
-#         run: git ls-files | ./Daily_Practice
+        run: git ls-files | ./Daily_Practice
