@@ -29,7 +29,7 @@ jobs:
         run: git ls-files | ./Daily_Practice
         
       - name: Telegram Message Notify
-        uses: appleboy/telegram-action@v0.1.1
+        uses: appleboy/telegram-action@v0.1.0
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
