@@ -52,6 +52,7 @@ int main(int argc, char **argv)
 
     string ignores[] = {
         ".github/workflows/manual.yml",
+        ".github/workflows/corn.yml",
         ".gitignore",
         "Daily_Practice_Corn_Job.cpp",
         "LICENSE",
