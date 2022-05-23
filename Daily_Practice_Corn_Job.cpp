@@ -36,8 +36,8 @@ void create_msg_files(vector<string> &selected_progs)
             std::replace(prog.begin(), prog.end(), '>', ' ');
             std::replace(prog.begin(), prog.end(), '&', ' ');
             auto topic_end = prog.find('/');
-            msg_file << "<strong>Topic: <ins>" << prog.substr(0, topic_end) << "</ins></strong><br>\n";
-            msg_file << "<em>Prog Name: " << prog.substr(topic_end + 1, prog.size() - topic_end) << "</em><br><br>\n";
+            msg_file << "<strong>Topic: <ins>" << prog.substr(0, topic_end) << "</ins></strong>\n";
+            msg_file << "<em>Prog Name: " << prog.substr(topic_end + 1, prog.size() - topic_end) << "</em>\n\n";
             msg_file << "<a href=\"" << url << "\">" << selected_progs[i] << "</a>\n";
             msg_file.close();
         }
