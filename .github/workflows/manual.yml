@@ -1,14 +1,14 @@
-name: Manual workflow To Get Files List
+name: Manual workflow to send 3 random programs Daily to telegram
 on:
   workflow_dispatch:
     inputs:
       name:
-        description: 'Get list of files in master branch'
-        default: 'Get Files List'
+        description: 'send 3 random programs Daily to telegram'
+        default: 'Send To Telegram'
         required: true
 
 jobs:
-  get_files:
+  send_files:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,10 +28,26 @@ jobs:
       - name: Create Messages
         run: git ls-files | ./Daily_Practice
         
-      - name: Telegram Message Notify
-        uses: appleboy/telegram-action@v0.1.0
+      - name: Telegram Message 1
+        uses: appleboy/telegram-action@v0.1.1
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: html
           message_file: ./msg_1.html
+          
+      - name: Telegram Message 2
+        uses: appleboy/telegram-action@v0.1.1
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: html
+          message_file: ./msg_2.html
+          
+      - name: Telegram Message 3
+        uses: appleboy/telegram-action@v0.1.1
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: html
+          message_file: ./msg_3.html
