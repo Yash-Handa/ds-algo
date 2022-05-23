@@ -1,0 +1,53 @@
+name: Manual workflow to send 3 random programs Daily to telegram
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'send 3 random programs Daily to telegram'
+        default: 'Send To Telegram'
+        required: true
+
+jobs:
+  send_files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install updates to run latest c++ binary
+        run: sudo apt-get install clang --install-suggests
+        
+      - uses: actions/checkout@v3
+      
+      - name: Check clang version and path
+        run: |
+          which clang++
+          clang++ -v
+      
+      - name: Build binary
+        run: clang++ -fdiagnostics-color=always -Ofast -std=c++20 Daily_Practice_Corn_Job.cpp -o Daily_Practice
+      
+      - name: Create Messages
+        run: git ls-files | ./Daily_Practice
+        
+      - name: Telegram Message 1
+        uses: appleboy/telegram-action@v0.1.1
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: html
+          message_file: ./msg_1.html
+          
+      - name: Telegram Message 2
+        uses: appleboy/telegram-action@v0.1.1
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: html
+          message_file: ./msg_2.html
+          
+      - name: Telegram Message 3
+        uses: appleboy/telegram-action@v0.1.1
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: html
+          message_file: ./msg_3.html
