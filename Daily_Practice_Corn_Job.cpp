@@ -1,6 +1,8 @@
 /*
-A c++ program that takes a list of file names from command line and select N number of them.
+Purpose: To get a list of N programs form master branch of Yash-Handa/ds-algo and send them to telegram.
 
+Working: Create msg_1.html, etc files for N selected files,
+the content of these msg files are send to telegram using github action
 */
 #include <iostream>
 #include <string>
@@ -8,8 +10,39 @@ A c++ program that takes a list of file names from command line and select N num
 #include <unordered_set>
 #include <random>
 #include <algorithm>
+#include <fstream>
 
-using std::vector, std::string, std::unordered_set;
+using std::vector, std::string, std::unordered_set, std::ios, std::cout;
+
+void create_msg_files(vector<string> &selected_progs)
+{
+    int sz = selected_progs.size();
+    for (int i = 0; i < sz; i++)
+    {
+        string file_name = "msg_" + std::to_string(i + 1) + ".html";
+        std::fstream msg_file;
+        msg_file.open(file_name, ios::out | ios::trunc);
+        if (!msg_file)
+        {
+            cout << file_name << " couldn't be created\n";
+            continue;
+        }
+        else
+        {
+            string prog = selected_progs[i];
+            string url = "https://github.com/Yash-Handa/ds-algo/" + prog;
+            std::replace(prog.begin(), prog.end(), '_', ' ');
+            std::replace(prog.begin(), prog.end(), '<', ' ');
+            std::replace(prog.begin(), prog.end(), '>', ' ');
+            std::replace(prog.begin(), prog.end(), '&', ' ');
+            auto topic_end = prog.find('/');
+            msg_file << "<strong>Topic: <ins>" << prog.substr(0, topic_end) << "</ins></strong><br>\n";
+            msg_file << "<em>Prog Name: " << prog.substr(topic_end + 1, prog.size() - topic_end) << "</em><br><br>\n";
+            msg_file << "<a href=\"" << url << "\">" << selected_progs[i] << "</a>\n";
+            msg_file.close();
+        }
+    }
+}
 
 int main(int argc, char **argv)
 {
@@ -21,7 +54,6 @@ int main(int argc, char **argv)
         ".github/workflows/manual.yml",
         ".gitignore",
         "Daily_Practice_Corn_Job.cpp",
-        "Daily_Practice",
         "LICENSE",
         "README.md"};
 
@@ -41,7 +73,6 @@ int main(int argc, char **argv)
                 n,
                 std::mt19937{std::random_device{}()});
 
-    for (string ele : selected_progs)
-        std::cout << ele << '\n';
+    create_msg_files(selected_progs);
     return 0;
 }
