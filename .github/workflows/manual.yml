@@ -25,5 +25,13 @@ jobs:
       - name: Build binary
         run: clang++ -fdiagnostics-color=always -Ofast -std=c++20 Daily_Practice_Corn_Job.cpp -o Daily_Practice
       
-      - name: List files
+      - name: Create Messages
         run: git ls-files | ./Daily_Practice
+        
+      - name: send telegram message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: html
+          message_file: ./msg_1.html
