@@ -30,14 +30,14 @@ void create_msg_files(vector<string> &selected_progs)
         else
         {
             string prog = selected_progs[i];
-            string url = "https://github.com/Yash-Handa/ds-algo/" + prog;
+            string url = "https://github.com/Yash-Handa/ds-algo/blob/master/" + prog;
             std::replace(prog.begin(), prog.end(), '_', ' ');
             std::replace(prog.begin(), prog.end(), '<', ' ');
             std::replace(prog.begin(), prog.end(), '>', ' ');
             std::replace(prog.begin(), prog.end(), '&', ' ');
             auto topic_end = prog.find('/');
             msg_file << "<strong>Topic: <ins>" << prog.substr(0, topic_end) << "</ins></strong>\n";
-            msg_file << "<em>Prog Name: " << prog.substr(topic_end + 1, prog.size() - topic_end) << "</em>\n\n";
+            msg_file << "<em>Prog Name: " << prog.substr(topic_end + 1, prog.size() - topic_end - 5) << "</em>\n\n";
             msg_file << "<a href=\"" << url << "\">" << selected_progs[i] << "</a>\n";
             msg_file.close();
         }
