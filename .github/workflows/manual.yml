@@ -28,8 +28,8 @@ jobs:
       - name: Create Messages
         run: git ls-files | ./Daily_Practice
         
-      - name: send telegram message
-        uses: appleboy/telegram-action@master
+      - name: Telegram Message Notify
+        uses: appleboy/telegram-action@v0.1.1
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
