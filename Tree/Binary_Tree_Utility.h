@@ -23,7 +23,7 @@ public:
     Binary_Tree() : HEAD(nullptr){};
 
 protected:
-    T *insert_level_order(std::vector<data_type> &v, int i)
+    T *insert_level_order(const std::vector<data_type> &v, int i)
     {
         if (i >= v.size())
             return nullptr;
@@ -65,13 +65,29 @@ protected:
     }
 
 public:
-    bool Breath_Vise_From_Vector(std::vector<data_type> &v)
+    bool Breath_Vise_From_Vector(const std::vector<data_type> &v)
     {
         if (HEAD)
             return false;
 
         HEAD = insert_level_order(v, 0);
         return true;
+    }
+
+    Binary_Tree(const std::vector<data_type> &v)
+    {
+        HEAD = insert_level_order(v, 0);
+    }
+
+    Binary_Tree(const int nodes, const int mod = 10)
+    {
+        std::vector<data_type> v;
+        srand(time(0));
+        for (int i = 0; i < nodes; i++)
+        {
+            v.push_back(rand() % mod);
+        }
+        HEAD = insert_level_order(v, 0);
     }
 
     void post_order_traversal()
