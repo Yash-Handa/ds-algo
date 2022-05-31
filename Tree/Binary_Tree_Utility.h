@@ -14,7 +14,7 @@ struct Node
 };
 
 template <class T>
-class Binary_Tree_Utility
+class Binary_Tree
 {
 public:
     T *HEAD;
