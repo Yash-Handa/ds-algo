@@ -36,7 +36,7 @@ int main()
     std::cout << "The given Tree:\n";
     bt.display();
 
-    std::cout << "Max in the tree: ";
+    std::cout << "Left view of the tree: ";
     left_view(bt.HEAD);
     std::cout << '\n';
     return 0;
