@@ -4,13 +4,13 @@ using namespace std;
 
 long long fact(int n)
 {
-    if (n <= 0)
+    if (n <= 1)
     {
-        cout << "0! = ";
+        cout << "1 = ";
         return 1;
     }
 
-    cout << n << "! x ";
+    cout << n << " x ";
     return n * fact(n - 1);
 }
 
